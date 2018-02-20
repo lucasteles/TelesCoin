@@ -1,0 +1,9 @@
+C:\d\TelesCoin\TelesCoin.BlockChain\bin\Debug\netstandard2.0\TelesCoin.BlockChain.deps.json
+C:\d\TelesCoin\TelesCoin.BlockChain\bin\Debug\netstandard2.0\TelesCoin.BlockChain.dll
+C:\d\TelesCoin\TelesCoin.BlockChain\bin\Debug\netstandard2.0\TelesCoin.BlockChain.pdb
+C:\d\TelesCoin\TelesCoin.BlockChain\obj\Debug\netstandard2.0\TelesCoin.BlockChain.csproj.CoreCompileInputs.cache
+C:\d\TelesCoin\TelesCoin.BlockChain\obj\Debug\netstandard2.0\TelesCoin.BlockChain.AssemblyInfoInputs.cache
+C:\d\TelesCoin\TelesCoin.BlockChain\obj\Debug\netstandard2.0\TelesCoin.BlockChain.AssemblyInfo.cs
+C:\d\TelesCoin\TelesCoin.BlockChain\obj\Debug\netstandard2.0\TelesCoin.BlockChain.dll
+C:\d\TelesCoin\TelesCoin.BlockChain\obj\Debug\netstandard2.0\TelesCoin.BlockChain.pdb
+C:\d\TelesCoin\TelesCoin.BlockChain\obj\Debug\netstandard2.0\TelesCoin.BlockChain.csprojResolveAssemblyReference.cache
