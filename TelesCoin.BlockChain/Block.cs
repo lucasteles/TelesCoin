@@ -12,7 +12,9 @@ namespace TelesCoin
         public string Hash { get; private set; }
         public int BlockSize { get; }
 
-        public IReadOnlyCollection<Transaction> Transactions { get; }
+        public string MerkleRootHash { get; set; }
+
+        public MerkleTree<Transaction> Transactions { get; }
 
         DateTime Created;
         int nonce;
@@ -25,12 +27,13 @@ namespace TelesCoin
         {
             Created = created;
             BlockSize = blockSize;
-            Transactions = pendingTransactions.ToArray();
+            Transactions = new MerkleTree<Transaction>(pendingTransactions.ToArray());
             PreviousHash = previousHash;
 
             if (Transactions.Count > blockSize)
                 throw new Exception("Invalid transaction size");
 
+            MerkleRootHash = Transactions.GetMarkleRootHash();
             CalculateHash();
         }
 
@@ -38,19 +41,18 @@ namespace TelesCoin
         {
             using (var algorithm = SHA256.Create())
             {
-                var contentBody = $"{PreviousHash}{Timestamp}{GetTransactionAssignature()}{nonce}";
+                var contentBody = $"{PreviousHash}{Timestamp}{MerkleRootHash}{nonce}";
                 var hash = algorithm.ComputeHash(Encoding.ASCII.GetBytes(contentBody));
                 Hash = BitConverter.ToString(hash).Replace("-", "");
                 return Hash;
             }
         }
 
-        public override string ToString() => $"{PreviousHash}:{Hash}|{Timestamp} -> {GetTransactionAssignature()}";
-
-        string GetTransactionAssignature() => string.Join(",", Transactions);
+        public override string ToString() => $"{PreviousHash}:{Hash}|{Timestamp} -> {MerkleRootHash}";
 
         public void MineBlock(int difficulty)
         {
+            //proof of work
             while (Hash.Substring(0, difficulty) != new string('0', difficulty))
             {
                 nonce++;

@@ -120,10 +120,8 @@ namespace TelesCoin.Test
             while (bc.PenddingTransactions.Count > 1)
                 bc.MiningPedingTransactions();
 
-            if (validChain) // lazy test :<
-                bc.IsChainValid().Should().BeTrue();
-            else
-                bc.IsChainValid().Should().BeFalse();
+            // lazy test :<
+            bc.IsChainValid().Should().Be(validChain);
 
         }
 

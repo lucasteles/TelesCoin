@@ -7,7 +7,7 @@ namespace TelesCoin.Test
     public class MockBlock : IBlock
     {
 
-        public IReadOnlyCollection<Transaction> Transactions { get; set; }
+        public MerkleTree<Transaction> Transactions { get; set; }
         public int BlockSize { get; set; }
         public string Hash { get; set; }
         public string PreviousHash { get; set; }
@@ -16,7 +16,7 @@ namespace TelesCoin.Test
         public MockBlock(int blockSize, IEnumerable<Transaction> pendingTransactions, string previousHash)
         {
             BlockSize = blockSize;
-            Transactions = pendingTransactions.ToArray();
+            Transactions = new MerkleTree<Transaction>(pendingTransactions.ToArray());
             PreviousHash = previousHash;
             Hash = CalculateHash();
         }
